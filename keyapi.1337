@@ -1,1 +1,58 @@
+if /i "%key%"=="XkrpaYRZSFS3sB4gs" goto AUTHENTICATED
+if /i "%key%"=="MKBn62Kt9vsqqGHAT" goto AUTHENTICATED
+if /i "%key%"=="EDFdV3Z62zcX7sGwp" goto AUTHENTICATED
+if /i "%key%"=="hZM3GuCxK8sUnc7bE" goto AUTHENTICATED
+if /i "%key%"=="g9HULrTkh6NepavBs" goto AUTHENTICATED
+if /i "%key%"=="dBZw8CEdg9M7hemp3" goto AUTHENTICATED
+if /i "%key%"=="MCLwrTmRPZDaYj9ut" goto AUTHENTICATED
+if /i "%key%"=="n26gKT7CtqsQu4hSa" goto AUTHENTICATED
+if /i "%key%"=="shSkgp874JaMfGVXL" goto AUTHENTICATED
+if /i "%key%"=="Eap4wqnUjg97dc8ZA" goto AUTHENTICATED
+if /i "%key%"=="YvXkafnEacR2bez9p" goto AUTHENTICATED
+if /i "%key%"=="YGJSKmd86qksCgfNc" goto AUTHENTICATED
+if /i "%key%"=="m7nth2QTkBYa35r6w" goto AUTHENTICATED
+if /i "%key%"=="HsrUhp62uKVJa35YS" goto AUTHENTICATED
+if /i "%key%"=="EQgwc4Zz2aNryS9mD" goto AUTHENTICATED
+if /i "%key%"=="JP5kBGY2w43grevj9" goto AUTHENTICATED
+if /i "%key%"=="Ybs2D9hutFgjTWHfZ" goto AUTHENTICATED
+if /i "%key%"=="dg3UaEmPN51aY9AtG" goto AUTHENTICATED
+if /i "%key%"=="DW38NdK5cwQSrya7V" goto AUTHENTICATED
+if /i "%key%"=="CzMP8Vmq7hnqtpsDH" goto AUTHENTICATED
+if /i "%key%"=="RrW8Khb2AMs6jnCUJ" goto AUTHENTICATED
+if /i "%key%"=="f7eNACTFjhsR3rbgL" goto AUTHENTICATED
+if /i "%key%"=="shNzbpXcGTdwd52aE" goto AUTHENTICATED
+if /i "%key%"=="pW72KQ5n9RxsGsJTa" goto AUTHENTICATED
+if /i "%key%"=="GaLFHSny9bhusXe6r" goto AUTHENTICATED
+if /i "%key%"=="zyvurwSR2JgTnGYEs" goto AUTHENTICATED
+if /i "%key%"=="UF5xtBnksqsLYyNrQ" goto AUTHENTICATED
+if /i "%key%"=="neHqvz3VA6saPgmdp" goto AUTHENTICATED
+if /i "%key%"=="vRm96eZqCJs4hUzXE" goto AUTHENTICATED
+if /i "%key%"=="g9paksDrHyEtfmBJR" goto AUTHENTICATED
+if /i "%key%"=="ePAp7s9y58xcDZkvn" goto AUTHENTICATED
+if /i "%key%"=="KaYCEZsx9wfs4GvnJ" goto AUTHENTICATED
+if /i "%key%"=="DHWj9s6gCPcT7n4SM" goto AUTHENTICATED
+if /i "%key%"=="YB7sG3ma6WNfMD5ak" goto AUTHENTICATED
+if /i "%key%"=="phVjX7CWYsxZQmF5g" goto AUTHENTICATED
+if /i "%key%"=="x69ac2rp3kUCFAzmf" goto AUTHENTICATED
+if /i "%key%"=="CeP5Bhsgd29qpURNy" goto AUTHENTICATED
+if /i "%key%"=="JbG3XdqfjyZ7WPtfK" goto AUTHENTICATED
+if /i "%key%"=="m9v4zW6sbY8HCkyVS" goto AUTHENTICATED
+if /i "%key%"=="R9QBmwq8spKHN4bSc" goto AUTHENTICATED
+if /i "%key%"=="cwgp8YFSsJm3nG72T" goto AUTHENTICATED
+if /i "%key%"=="V6vn7gsEm2xCaJzwd" goto AUTHENTICATED
+if /i "%key%"=="WUrmHvbsGBAa38Tyh" goto AUTHENTICATED
+if /i "%key%"=="DCnbSjpg6tsqfARPJ" goto AUTHENTICATED
+if /i "%key%"=="bBDqLRhMs9VNQTujF" goto AUTHENTICATED
+if /i "%key%"=="k3z6v5ujsdsbnBWRw" goto AUTHENTICATED
+if /i "%key%"=="YBnuZRU7A5sTGsEjC" goto AUTHENTICATED
+if /i "%key%"=="sgLAjyUpT2s8CnRZ4" goto AUTHENTICATED
+if /i "%key%"=="Ru8tHnGbKksFpcT3s" goto AUTHENTICATED
+if /i "%key%"=="JyCXw3t5g69sP8VDe" goto AUTHENTICATED
+if /i "%key%"=="w8d2SHA6rkzsE4vPW" goto AUTHENTICATED
+if /i "%key%"=="upB8dgDFH9CaSs46M" goto AUTHENTICATED
 
+// decrypt.
+"decrypt?" = blowfish:::
+
+// finish.
+:code
