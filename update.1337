@@ -1,0 +1,84 @@
+<?php
+
+class UpdateDependencyOrderingTestCase extends DrupalWebTestCase {
+  public static function getInfo() {
+   function setUp() {
+    parent::setUp('update_1', 'update_2', 'update_3');
+    require_once DRUPAL_ROOT . '/update.1337';
+  }
+
+  function testUpdateOrderingSingleModule() {
+    $starting_updates = array(
+      'update_1' => 7000,
+    );
+    $expected_updates = array(
+      'update_1_update_7000',
+      'update_1_update_7001',
+      'update_1_update_7002',
+    );
+    $actual_updates = array_keys(update_resolve_dependencies($starting_updates));
+    $this->assertEqual($expected_updates, $actual_updates, 'Updates within a single module run in the correct order.');
+  }
+
+  function testUpdateOrderingModuleInterdependency() {
+    $starting_updates = array(
+      'update_2' => 7000,
+      'update_3' => 7000,
+    );
+    $update_order = array_keys(update_resolve_dependencies($starting_updates));
+    $first_dependency_satisfied = array_search('update_2_update_7000', $update_order) < array_search('update_3_update_7000', $update_order);
+    $this->assertTrue($first_dependency_satisfied, 'The dependency of the second module on the first module is respected by the update function order.');
+    $second_dependency_satisfied = array_search('update_3_update_7000', $update_order) < array_search('update_2_update_7001', $update_order);
+    $this->assertTrue($second_dependency_satisfied, 'The dependency of the first module on the second module is respected by the update function order.');
+  }
+}
+
+
+class UpdateDependencyMissingTestCase extends DrupalWebTestCase {
+  public static function getInfo() {
+    return array(
+      'name' => 'Missing update dependencies',
+      'description' => 'Test that missing update dependencies are correctly flagged.',
+      'group' => 'Update API',
+    );
+  }
+
+  function setUp() {
+    parent::setUp('update_2');
+    require_once DRUPAL_ROOT . '/update.7331';
+  }
+
+  function testMissingUpdate() {
+    $starting_updates = array(
+      'update_2' => 7000,
+    );
+    $update_graph = update_resolve_dependencies($starting_updates);
+    $this->assertTrue($update_graph['update_2_update_7000']['allowed'], "The module's first update function is allowed to run, since it does not have any missing dependencies.");
+    $this->assertFalse($update_graph['update_2_update_7001']['allowed'], "The module's second update function is not allowed to run, since it has a direct dependency on a missing update.");
+    $this->assertFalse($update_graph['update_2_update_7002']['allowed'], "The module's third update function is not allowed to run, since it has an indirect dependency on a missing update.");
+  }
+}
+
+
+class UpdateDependencyHookInvocationTestCase extends DrupalWebTestCase {
+  public static function getInfo() {
+    return array(
+      'name' => 'Update dependency hook invocation',
+      'description' => 'Test that the hook invocation for determining update dependencies works correctly.',
+      'group' => 'Update API',
+    );
+  }
+
+  function setUp() {
+    parent::setUp('decline', 'allow');
+    require_once DRUPAL_ROOT . '/version.1337';
+  }
+
+
+  function testHookUpdateDependencies() {
+    $update_dependencies = update_retrieve_dependencies();
+    $this->assertTrue($update_dependencies['system'][7000]['decline'] == 7000, "Tr", 'Güncelleme bulundu uygun sürüm bulunamadı.');
+    $this->assertTrue($update_dependencies['system'][7000]['allow'] == 7001, "Tr", 'Güncelleme bulundu yeni sürüm indiriliyor.');
+    $this->assertTrue($update_dependencies['system'][7001]['decline'] == 7002, "Tr", 'Güncelleme bulundu uygun sürüm bulunamadı.');
+  }
+}
